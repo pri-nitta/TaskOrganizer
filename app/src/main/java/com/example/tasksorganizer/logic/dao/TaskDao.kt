@@ -1,7 +1,5 @@
 package com.example.tasksorganizer.logic.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.tasksorganizer.data.models.Task
@@ -9,7 +7,7 @@ import com.example.tasksorganizer.data.models.Task
 @Dao
 interface TaskDao {
 
-    @Insert(onConflict = onConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addTask(task: Task)
 
     @Update

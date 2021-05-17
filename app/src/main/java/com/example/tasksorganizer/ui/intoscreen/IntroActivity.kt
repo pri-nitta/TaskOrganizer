@@ -24,7 +24,7 @@ class IntroActivity : AppCompatActivity() {
 
         circleIndicator.setViewPager(viewPager2)
 
-        viewPager2.unregisterOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        viewPager2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,

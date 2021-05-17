@@ -12,7 +12,11 @@ class ViewPagerAdapter(introViews: List<IntroView>): RecyclerView.Adapter<ViewPa
 
     private val list = introViews
 
-    class IntroViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    class IntroViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        init{
+
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IntroViewHolder {
         return IntroViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.intro_item_page, parent, false))

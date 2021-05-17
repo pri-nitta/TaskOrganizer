@@ -15,9 +15,14 @@
     <string name="add_task">Add task</string>
     <string name="add_a_habit">"We can see you have not add anything yet!\n How about adding tasks today?"</string>
     <string name="add_button">Add button</string>
-    <string name="oops">OOPS...</string>
+    <string name="oops">OOPS…</string>
     <string name="task_title">Task Title</string>
     <string name="edit_task">Edit Task</string>
     <string name="you_can_update_a_task_as_you_like">You can update a task as you like!</string>
     <string name="update_task">Update Task</string>
+    <string name="delete_task">Delete task</string>
+    <string name="task_deleted">Task deleted! 👍</string>
+    <string name="error_update">Please change at least the title!</string>
+    <string name="task_add_correctly">Task added with success! 😀</string>
+    <string name="let_s_start_a_task">Let\'s start a task</string>
 </resources>

@@ -1,60 +1,74 @@
 package com.example.tasksorganizer.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.tasksorganizer.R
+import com.example.tasksorganizer.data.models.Task
+import com.example.tasksorganizer.ui.viewmodel.TaskViewModel
+import kotlinx.android.synthetic.main.fragment_edit_task_bottom_sheet.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class EditTaskBottomSheetFragment : Fragment(R.layout.fragment_edit_task_bottom_sheet) {
+    private var title = ""
+    private var description = ""
+    private var status = ""
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EditTaskBottomSheetFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class EditTaskBottomSheetFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var taskViewModel: TaskViewModel
+    private val args by navArgs<EditTaskBottomSheetFragmentArgs>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+
+        et_EditTaskTitle.setText(args.selectedTask.taskTitle)
+        et_EditTaskDesc.setText(args.selectedTask.taskDescription)
+
+        btnEditTask.setOnClickListener {
+            editTask()
+        }
+
+        setHasOptionsMenu(true)
+    }
+
+    private fun editTask(){
+        title = et_EditTaskTitle.text.toString()
+        description = et_EditTaskDesc.text.toString()
+        status = "to do"
+
+        if (!(title.isEmpty())){
+            val task = Task(args.selectedTask.id, title, description, status)
+
+            taskViewModel.editTask(task)
+            Toast.makeText(context, getString(R.string.task_add_correctly), Toast.LENGTH_SHORT).show()
+
+            findNavController().navigate(R.id.action_editTaskBottomSheetFragment_to_taskListFragment)
+        }else{
+            error(getString(R.string.error_update))
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_task_bottom_sheet, container, false)
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.single_item_menu, menu)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EditTaskBottomSheetFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EditTaskBottomSheetFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_delete -> deleteTask(args.selectedTask)
+        }
+        return super.onOptionsItemSelected(item)
     }
+
+
+    private fun deleteTask(task: Task){
+        taskViewModel.deleteTask(task)
+        Toast.makeText(context, getString(R.string.task_deleted), Toast.LENGTH_SHORT).show()
+        findNavController().navigate(R.id.action_editTaskBottomSheetFragment_to_taskListFragment)
+    }
+
 }

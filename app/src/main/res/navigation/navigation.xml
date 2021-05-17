@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/taskListFragment"
         android:name="com.example.tasksorganizer.ui.fragments.TaskListFragment"
-        android:label="fragment_task_list"
+        android:label="Task"
         tools:layout="@layout/fragment_task_list" >
         <action
             android:id="@+id/action_taskListFragment_to_addTaskBottomSheetFragment"
@@ -20,7 +20,8 @@
     <fragment
         android:id="@+id/addTaskBottomSheetFragment"
         android:name="com.example.tasksorganizer.ui.fragments.AddTaskBottomSheetFragment"
-        android:label="AddTaskBottomSheetFragment" >
+        android:label="Create task"
+        tools:layout="@layout/fragment_add_task_bottom_sheet">
         <action
             android:id="@+id/action_addTaskBottomSheetFragment_to_taskListFragment"
             app:destination="@id/taskListFragment" />
@@ -28,10 +29,14 @@
     <fragment
         android:id="@+id/editTaskBottomSheetFragment"
         android:name="com.example.tasksorganizer.ui.fragments.EditTaskBottomSheetFragment"
-        android:label="fragment_edit_task_bottom_sheet"
+        android:label="Update task"
         tools:layout="@layout/fragment_edit_task_bottom_sheet" >
         <action
             android:id="@+id/action_editTaskBottomSheetFragment_to_taskListFragment"
+            app:exitAnim="@anim/fragment_close_exit"
             app:destination="@id/taskListFragment" />
+        <argument
+            android:name="selectedTask"
+            app:argType="com.example.tasksorganizer.data.models.Task" />
     </fragment>
 </navigation>
