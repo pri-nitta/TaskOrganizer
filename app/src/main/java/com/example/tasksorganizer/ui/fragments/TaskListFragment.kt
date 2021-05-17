@@ -23,8 +23,11 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list) {
         rv_task.adapter = adapter
         rv_task.layoutManager = LinearLayoutManager(context)
 
-       taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        fab_add.setOnClickListener {
+            findNavController().navigate(R.id.action_taskListFragment_to_addTaskBottomSheetFragment)
+        }
 
+        taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
         taskViewModel.getAllTasks.observe(viewLifecycleOwner, Observer {
             adapter.setData(it)
             taskList = it
@@ -48,11 +51,5 @@ class TaskListFragment : Fragment(R.layout.fragment_task_list) {
             adapter.setData(taskList)
             swipeToRefresh.isRefreshing = false
         }
-
-        fab_add.setOnClickListener {
-            findNavController().navigate(R.id.action_taskListFragment_to_addTaskBottomSheetFragment)
-        }
-
     }
-
 }

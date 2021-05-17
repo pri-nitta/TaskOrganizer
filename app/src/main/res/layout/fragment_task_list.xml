@@ -34,7 +34,7 @@
         app:borderWidth="0dp"
         app:maxImageSize="35dp"
         android:contentDescription="@string/add_button"
-        android:src="@drawable/ic_baseline_add_24" />
+        android:src="@drawable/ic_baseline_add_24"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_centerInParent="true"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:fontFamily="@font/ptserifbold"
+            android:fontFamily="@font/ptserifregular"
             android:text="@string/add_a_habit"
             android:textAlignment="center"
             android:textColor="@color/black"

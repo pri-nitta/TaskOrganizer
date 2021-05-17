@@ -13,7 +13,7 @@ import com.example.tasksorganizer.ui.viewmodel.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_add_task_bottom_sheet.*
 
-class AddTaskBottomSheetFragment : BottomSheetDialogFragment() {
+class AddTaskBottomSheetFragment: BottomSheetDialogFragment() {
 
     private var title =""
     private var description = ""
@@ -26,11 +26,8 @@ class AddTaskBottomSheetFragment : BottomSheetDialogFragment() {
         setStyle(STYLE_NORMAL, R.style.CustomBottomSheetDialogTheme)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_add_task_bottom_sheet, container, false)
     }
 
@@ -47,7 +44,7 @@ class AddTaskBottomSheetFragment : BottomSheetDialogFragment() {
         status = "to do"
 
         if (title.isEmpty()){
-            error("Please type a title!")
+            Toast.makeText(context,"Please add at least a title", Toast.LENGTH_SHORT).show()
         } else{
             val task = Task(0, title, description, status)
             taskViewModel.addTask(task)
