@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/taskListFragment">
+
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.example.tasksorganizer.ui.fragments.TaskListFragment"
+        android:label="fragment_task_list"
+        tools:layout="@layout/fragment_task_list" >
+        <action
+            android:id="@+id/action_taskListFragment_to_addTaskBottomSheetFragment"
+            app:destination="@id/addTaskBottomSheetFragment" />
+        <action
+            android:id="@+id/action_taskListFragment_to_editTaskBottomSheetFragment"
+            app:destination="@id/editTaskBottomSheetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTaskBottomSheetFragment"
+        android:name="com.example.tasksorganizer.ui.fragments.AddTaskBottomSheetFragment"
+        android:label="AddTaskBottomSheetFragment" >
+        <action
+            android:id="@+id/action_addTaskBottomSheetFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTaskBottomSheetFragment"
+        android:name="com.example.tasksorganizer.ui.fragments.EditTaskBottomSheetFragment"
+        android:label="fragment_edit_task_bottom_sheet"
+        tools:layout="@layout/fragment_edit_task_bottom_sheet" >
+        <action
+            android:id="@+id/action_editTaskBottomSheetFragment_to_taskListFragment"
+            app:destination="@id/taskListFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Tasks Organizer</string>
+    <string name="app_display">Tasks</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_description">Helping you to organize your life and keep your goals!</string>
+    <string name="icon">icon</string>
+    <string name="something">Something</string>
+    <string name="page_1">Welcome to the Task Organizer app!</string>
+    <string name="page_2">You can add tasks and do the proper follow up on them!</string>
+    <string name="page_3">You can change the task\'s status for to do, doing and done</string>
+    <string name="add_a_new_task">New Task</string>
+    <string name="add_a_new_task_that_will_be_done">Add a new task that will be done</string>
+    <string name="title">Title*</string>
+    <string name="description">Description</string>
+    <string name="add_task">Add task</string>
+    <string name="add_a_habit">"We can see you have not add anything yet!\n How about adding tasks today?"</string>
+    <string name="add_button">Add button</string>
+    <string name="oops">OOPS...</string>
+    <string name="task_title">Task Title</string>
+    <string name="edit_task">Edit Task</string>
+    <string name="you_can_update_a_task_as_you_like">You can update a task as you like!</string>
+    <string name="update_task">Update Task</string>
+</resources>
